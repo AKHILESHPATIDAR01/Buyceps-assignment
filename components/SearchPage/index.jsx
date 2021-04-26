@@ -17,10 +17,20 @@ export default function SearchPage(props) {
 
 	const fetchData = async(pageNumber) =>{
 		// const result = await fetch(`http://www.omdbapi.com/?apikey=b29ea5a1&t={title}&y={year}&i={id}`)
-		const result = await fetch(`http://www.omdbapi.com/?apikey=b29ea5a1&s=${serachTitle}&y=${searchYear}&i=${searchId}&plot=full`);
-		const newData = await result.json();
-		console.log("fetched Data :",newData.Search);
-		setDisplayData(newData.Search);
+		if (window.location.protocol === 'http:'){
+			const result = await fetch(`http://www.omdbapi.com/?apikey=b29ea5a1&s=${serachTitle}&y=${searchYear}&i=${searchId}&plot=full`);
+			const newData = await result.json();
+			console.log("fetched Data :",newData.Search);
+			setDisplayData(newData.Search);
+		}
+		else{
+			const result = await fetch(`https://www.omdbapi.com/?apikey=b29ea5a1&s=${serachTitle}&y=${searchYear}&i=${searchId}&plot=full`);
+			const newData = await result.json();
+			console.log("fetched Data :",newData.Search);
+			setDisplayData(newData.Search);
+		}
+		
+		
 	}
 
 	useEffect(()=>{
