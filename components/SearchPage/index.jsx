@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { BrowserRouter , Switch , Route } from 'react-router-dom';
+import { BrowserRouter , Switch , Route, Link } from 'react-router-dom';
 import Data from '../../public/sampleData.json'
 import { data } from "autoprefixer";
 const SearchBar = dynamic(() => import("../SearchBar"));
@@ -8,8 +8,8 @@ const SearchBar = dynamic(() => import("../SearchBar"));
 export default function SearchPage(props) {
 	const [displayData, setDisplayData] = useState([]);
 	const [pageNumber , setPageNumber] = useState(1);
-	const [serachTitle , setSerachTitle] = useState("Radhe");
-	const [searchYear , setsearchYear] = useState(2021);
+	const [serachTitle , setSerachTitle] = useState("Golmaal");
+	const [searchYear , setsearchYear] = useState();
 	const [searchId , setSearchId] = useState("tt10888594");
 
 	// console.log(Data.Search);
@@ -48,7 +48,7 @@ export default function SearchPage(props) {
 				<div className="display-items">
 					{displayData.map((item)=>{
 						return(
-							<div className='display-card'>
+							<div className='display-card' key={item.imdbID}>
 								<div className='display-img-portion'>
 									<img src={item.Poster} />
 								</div>
@@ -60,13 +60,17 @@ export default function SearchPage(props) {
 									<h1 className="display-heading">IMDB : <br></br><span>{item.imdbID}</span></h1>
 									<div className='display-lastline'>
 										<h1 className="display-heading">Type : <br></br><span>{item.Type}</span></h1>
-										<a href="" className="morebtn">more</a>
+										
+										<Link to={`/singlepage/${item.Title}`}>
+											<a href="" className="morebtn">more</a>
+										</Link>
+										
 									</div>
 									
 								</div>
-								<div className="display-card-hover">
+								{/* <div className="display-card-hover">
 									{item.Title}
-								</div>
+								</div> */}
 							</div>
 						);
 					})}
