@@ -45,8 +45,10 @@ function SinglePage() {
             <div className="singlePage-container">
                 <div className="singlePage-Heading">
                     <div className="s-p-poster">
-                        <img src={singleMovieData.Poster} alt="imagsdgs" />
-                    </div>
+	    <img src="" alt="imagsdgs" />
+	    { /*  <img src={singleMovieData.Poster} alt="imagsdgs" /> */}
+
+	    </div>
                     <div className="s-p-name">
                         <div className="s-p-top">
                             <div>
