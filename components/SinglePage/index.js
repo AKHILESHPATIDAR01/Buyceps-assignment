@@ -28,7 +28,7 @@ function SinglePage() {
 
     useEffect(()=>{
         fetchDataSingle();
-    },[]);
+    },[singleMovieData]);
 
     // useEffect(()=>{
 	// 	fetchDataSingle();
