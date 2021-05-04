@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-export default function SearchBar( { setSerachTitle , setsearchYear ,setSearchId  } ) {
+export default function SearchBar( { setSerachTitle , setsearchYear ,setSearchId ,setDisplayData,setPageNumber } ) {
 	const [titleInput, setTitleInput]=useState("");
 	const [yearInput, setYearInput]=useState("");
 	const [idInput, setIdInput]=useState("");
+	const [blankState , setBlankState]= useState([]);
 
 	const handleSubmit = (e)=>{
 		e.preventDefault();
-		// console.log("SUBMIT CLICKED");
 		if(titleInput !== ""){
 			setSerachTitle(titleInput);
 			setSearchId(idInput);
